@@ -25,6 +25,9 @@
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
     </users>
+    <repository type="apt-deb" alias="Foreman" distribution="focal" components="3.1" repository_gpgcheck="false" imageinclude="true">
+        <source path="http://deb.theforeman.org/"/>
+    </repository>
     <repository type="apt-deb" repository_gpgcheck="false" imageinclude="true">
         <source path="obs://Virtualization:Appliances:Builder/xUbuntu_20.04"/>
     </repository>
@@ -64,6 +67,31 @@
         <package name="btrfs-progs"/>
         <package name="shim"/>
         <package name="shim-signed"/>
+        <!-- Facter -->
+        <package name="ethtool"/>
+        <package name="lldpad"/>
+        <package name="net-tools"/>
+        <package name="dmidecode"/>
+        <package name="virt-what"/>
+        <!-- Foreman proxy -->
+        <package name="foreman-proxy"/>
+        <package name="curl"/>
+        <package name="wget"/>
+        <package name="passwd"/>
+        <package name="sudo"/>
+        <package name="openipmi"/>
+        <package name="openssl"/>
+        <package name="libelf1"/>
+        <!-- Interactive discovery -->
+        <package name="kexec-tools"/>
+        <package name="kbd"/>
+        <!-- Foreman Debug/Misc -->
+        <package name="ssh"/>
+        <package name="ipmitool"/>
+        <package name="network-manager"/>
+        <package name="vim"/>
+        <package name="less"/>
+        <package name="file"/>
     </packages>
     <packages type="iso">
         <package name="dracut-kiwi-live"/>
