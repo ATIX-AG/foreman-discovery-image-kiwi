@@ -7,7 +7,7 @@
         name:
           - git
           - kiwi-cli
-          - qemu-tools
+          - qemu-img
         state: present
         update_cache: true
     - name: Clone repo
@@ -15,9 +15,12 @@
         repo: "{{ lookup('env', 'CI_REPOSITORY_URL') }}"
         dest: "/root/fdi-repo" 
         version: "{{ lookup('env', 'CI_COMMIT_SHA') }}"
+    - name: Clean build dir
+      ansible.builtin.file:
+        path: "/root/fdi-image"
+        state: "absent"
     - name: Build image
       ansible.builtin.command:
         cmd: kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /root/fdi-image
         chdir: "/root/fdi-repo"
-        creates: "/root/fdi-image/build"
 ...
