@@ -7,7 +7,7 @@ terraform {
     tls    = { source = "hashicorp/tls" }
   }
 
-  #  backend "http" {}
+  backend "http" {}
 }
 
 provider "aws" {
