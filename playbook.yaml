@@ -1,0 +1,22 @@
+---
+- name: test connection
+  hosts: all
+  tasks:
+    - name: Install kiwi
+      ansible.builtin.dnf:
+        name:
+          - git
+          - kiwi-cli
+        state: present
+        update_cache: true
+    - name: Clone repo
+      ansible.builtin.git:
+        repo: "{{ lookup('env', 'CI_REPOSITORY_URL') }}"
+        dest: "/root/fdi-repo" 
+        version: "{{ lookup('env', 'CI_COMMIT_SHA') }}"
+    - name: Build image
+      ansible.builtin.command:
+        cmd: kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /root/fdi-image
+        chdir: "/root/fdi-repo"
+        creates: "/root/fdi-image/build"
+...
