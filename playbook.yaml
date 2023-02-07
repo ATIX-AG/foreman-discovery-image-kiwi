@@ -1,5 +1,5 @@
 ---
-- name: test connection
+- name: Build and export image 
   hosts: all
   tasks:
     - name: Install kiwi
@@ -7,6 +7,7 @@
         name:
           - git
           - kiwi-cli
+          - qemu-tools
         state: present
         update_cache: true
     - name: Clone repo
