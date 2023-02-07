@@ -1,4 +1,7 @@
 ---
+variables:
+  AUTO_APPLY: "true"
+
 include:
   - project: "Terraform/ci-templates"
     file: "terraform.yaml"

@@ -8,6 +8,8 @@
           - git
           - kiwi-cli
           - qemu-img
+          - squashfs-tools
+          - xorriso
         state: present
         update_cache: true
     - name: Clone repo
