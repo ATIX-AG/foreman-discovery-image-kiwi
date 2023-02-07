@@ -11,6 +11,9 @@ module "host" {
   host_image = "fedora-37"
 
   ansible_playbook = "${path.module}/playbook.yaml"
+  ansible_triggers = {
+    time = timestamp()
+  }
 
   firewall_create = false
 }
