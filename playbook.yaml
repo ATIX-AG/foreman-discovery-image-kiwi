@@ -35,10 +35,10 @@
       ansible.builtin.find:
         paths: "/root/fdi-image"
         patterns: "*.iso"
-      register: file_to_copy
+      register: files_to_copy
     - name: Fetch image
       ansible.builtin.fetch:
-        src: "{{ item }}"
+        src: "{{ item.path }}"
         dest: "./"
         flat: false
       with_items: "{{ files_to_copy.files }}"
@@ -46,9 +46,16 @@
 - name: Publish to factory
   hosts: factory
   tasks:
+    - name: Find image locally
+      ansible.builtin.find:
+        paths: "./"
+        patterns: "*.iso"
+        recurse: true
+      delegate_to: localhost
+      register: files_to_copy
     - name: Upload ISO
       ansible.builtin.copy:
-        src: "./{{ item }}"
+        src: "./{{ item.path }}"
         dest: "/data/mirror/orcharhino/fdi/"
       with_items: "{{ files_to_copy.files }}"
 ...
