@@ -1,4 +1,10 @@
 ---
+- name: Test connectivity
+  hosts: all
+  tasks:
+    - name: Ping
+      ansible.builtin.ping:
+
 - name: Build and export image
   hosts: builder
   tasks:
