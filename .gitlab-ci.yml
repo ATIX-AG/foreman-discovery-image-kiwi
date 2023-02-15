@@ -1,4 +1,8 @@
 ---
+default:
+  tags:
+    - "dev_infra"
+
 variables:
   AUTO_APPLY: "true"
 
