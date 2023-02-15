@@ -1,6 +1,6 @@
 ---
-- name: Build and export image 
-  hosts: all
+- name: Build and export image
+  hosts: builder
   tasks:
     - name: Install kiwi
       ansible.builtin.dnf:
@@ -15,7 +15,7 @@
     - name: Clone repo
       ansible.builtin.git:
         repo: "{{ lookup('env', 'CI_REPOSITORY_URL') }}"
-        dest: "/root/fdi-repo" 
+        dest: "/root/fdi-repo"
         version: "{{ lookup('env', 'CI_COMMIT_SHA') }}"
     - name: Clean build dir
       ansible.builtin.file:

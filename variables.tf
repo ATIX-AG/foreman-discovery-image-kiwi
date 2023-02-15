@@ -15,3 +15,8 @@ variable "aws_secret_key" {
 variable "environment" {
   type = string
 }
+
+variable "pipeliner_ssh_private_key" {
+  type      = string
+  sensitive = true
+}
