@@ -1,3 +1,3 @@
 output "inventory" {
-  value = module.host.inventory
+  value = module.inventory.yaml
 }
