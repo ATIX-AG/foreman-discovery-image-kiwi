@@ -25,4 +25,24 @@
       ansible.builtin.command:
         cmd: kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /root/fdi-image
         chdir: "/root/fdi-repo"
+    - name: Find image
+      ansible.builtin.find:
+        paths: "/root/fdi-image"
+        patterns: "*.iso"
+      register: file_to_copy
+    - name: Fetch image
+      ansible.builtin.fetch:
+        src: "{{ item }}"
+        dest: "./"
+        flat: false
+      with_items: "{{ files_to_copy.files }}"
+
+- name: Publish to factory
+  hosts: factory
+  tasks:
+    - name: Upload ISO
+      ansible.builtin.copy:
+        src: "./{{ item }}"
+        dest: "/data/mirror/orcharhino/fdi/"
+      with_items: "{{ files_to_copy.files }}"
 ...
