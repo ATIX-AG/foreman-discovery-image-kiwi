@@ -48,7 +48,7 @@
         <package name="grub-common"/>
         <package name="grub2-common"/>
         <package name="grub-pc-bin"/>
-        <package name="linux-generic"/>
+        <package name="linux-generic-hwe-20.04"/>
         <package name="isolinux"/>
         <package name="syslinux"/>
         <package name="syslinux-common"/>
