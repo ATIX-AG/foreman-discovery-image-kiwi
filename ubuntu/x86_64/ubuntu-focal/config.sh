@@ -224,3 +224,5 @@ UDEV
 
 # extra modules for livecd-creator/livemedia-creator
 echo 'add_drivers+="mptbase mptscsih mptspi hv_storvsc hid_hyperv hv_netvsc hv_vmbus"' > /etc/dracut.conf.d/99-discovery.conf
+
+echo '0.1-atix' > /usr/share/fdi/VERSION
