@@ -12,8 +12,6 @@
     <preferences>
         <version>1.16.4</version>
         <packagemanager>apt-get</packagemanager>
-        <bootsplash-theme>sabily</bootsplash-theme>
-        <bootloader-theme>ubuntu-mate</bootloader-theme>
         <locale>en_US</locale>
         <keytable>us</keytable>
         <timezone>UTC</timezone>
