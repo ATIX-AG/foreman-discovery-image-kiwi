@@ -226,3 +226,10 @@ UDEV
 echo 'add_drivers+="mptbase mptscsih mptspi hv_storvsc hid_hyperv hv_netvsc hv_vmbus"' > /etc/dracut.conf.d/99-discovery.conf
 
 echo '0.1-atix' > /usr/share/fdi/VERSION
+
+# Install required rubygems
+gem install newt -v 0.9.7
+apt -y autoremove make git gcc ruby-dev libnewt-dev
+gem install facter -v 4.2.10
+gem install fast_gettext -v 1.8.0
+gem install smart_proxy_discovery_image -v 1.6.0
