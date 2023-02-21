@@ -90,12 +90,6 @@
         <package name="vim"/>
         <package name="less"/>
         <package name="file"/>
-        <!-- Build newt rubygem -->
-        <package name="make"/>
-        <package name="git"/>
-        <package name="gcc"/>
-        <package name="ruby-dev"/>
-        <package name="libnewt-dev"/>
     </packages>
     <packages type="iso">
         <package name="dracut-kiwi-live"/>

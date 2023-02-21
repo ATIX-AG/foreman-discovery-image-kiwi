@@ -228,6 +228,8 @@ echo 'add_drivers+="mptbase mptscsih mptspi hv_storvsc hid_hyperv hv_netvsc hv_v
 echo '0.1-atix' > /usr/share/fdi/VERSION
 
 # Install required rubygems
+apt -y update
+apt -y install --no-install-recommends make git gcc ruby-dev libnewt-dev
 gem install newt -v 0.9.7
 apt -y autoremove make git gcc ruby-dev libnewt-dev
 gem install facter -v 4.2.10
