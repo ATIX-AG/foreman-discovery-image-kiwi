@@ -83,6 +83,7 @@
         <!-- Interactive discovery -->
         <package name="kexec-tools"/>
         <package name="kbd"/>
+        <package name="unzip"/>
         <!-- Foreman Debug/Misc -->
         <package name="ssh"/>
         <package name="ipmitool"/>
