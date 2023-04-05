@@ -24,6 +24,7 @@
         repo: "{{ lookup('env', 'CI_REPOSITORY_URL') }}"
         dest: "/root/fdi-repo"
         version: "{{ lookup('env', 'CI_COMMIT_SHA') }}"
+        force: true
     - name: Clean build dir
       ansible.builtin.file:
         path: "/root/fdi-image"
