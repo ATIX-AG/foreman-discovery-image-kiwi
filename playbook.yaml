@@ -27,6 +27,25 @@
       ansible.builtin.file:
         path: "/root/fdi-image"
         state: "absent"
+    - name: Get Git tag if exists
+      ansible.builtin.command:
+        cmd: git -C /root/fdi-repo describe --exact-match --tags HEAD
+      register: git_tag
+      ignore_errors: true
+    - name: Set FDI release to Git tag
+      ansible.builtin.copy:
+        content: "{{ git_tag.stdout_lines.0 }}"
+        dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/RELEASE
+      when: git_tag.rc == 0
+    - name: Get Git revision
+      ansible.builtin.command:
+        cmd: git -C /root/fdi-repo rev-parse --short HEAD
+      register: git_revision
+      ignore_errors: true
+    - name: Set FDI version to Git revision
+      ansible.builtin.copy:
+        content: "{{ git_revision.stdout_lines.0 }}"
+        dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/VERSION
     - name: Build image
       ansible.builtin.command:
         cmd: kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /root/fdi-image
