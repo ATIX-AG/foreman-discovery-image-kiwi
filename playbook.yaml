@@ -51,7 +51,13 @@
 
     - name: Patch KIWI (https://github.com/OSInside/kiwi/issues/2275)
       ansible.builtin.shell:
-        cmd: patch -d /usr/lib/python3.*/site-packages/kiwi/ < /root/fdi-repo/0001-Add-potential-shim-binary-for-Ubuntu.patch
+        cmd: patch -N -d /usr/lib/python3.*/site-packages/kiwi/ < /root/fdi-repo/0001-Add-potential-shim-binary-for-Ubuntu.patch
+      register: patch
+      failed_when:
+        - "'Reversed (or previously applied) patch detected!  Skipping patch.' not in patch.stdout"
+        - patch.rc != 0
+      changed_when:
+        - "'Reversed (or previously applied) patch detected!  Skipping patch.' not in patch.stdout"
 
     - name: Build image
       ansible.builtin.command:
