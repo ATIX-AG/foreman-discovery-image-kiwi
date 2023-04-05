@@ -64,6 +64,11 @@ rm -r /var/lib/apt/*
 rm -r /var/cache/apt/*
 
 #=======================================
+# SSH configuration
+#---------------------------------------
+sed -i 's/^#PermitRootLogin.*$/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+#=======================================
 # Foreman Discovery Image
 #---------------------------------------
 
