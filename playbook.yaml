@@ -29,25 +29,25 @@
       ansible.builtin.file:
         path: "/root/fdi-image"
         state: "absent"
-    - name: Get Git tag if exists
+    - name: Get tag if exists
       ansible.builtin.command:
-        cmd: git -C /root/fdi-repo describe --exact-match --tags HEAD
+        cmd: git -C /root/fdi-repo describe --abbrev=0 --tags HEAD
       register: git_tag
       ignore_errors: true
-    - name: Set FDI release to Git tag
+    - name: Set tag as FDI version
       ansible.builtin.copy:
         content: "{{ git_tag.stdout_lines.0 }}"
-        dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/RELEASE
+        dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/VERSION
       when: git_tag.rc == 0
-    - name: Get Git revision
+    - name: Get revision
       ansible.builtin.command:
         cmd: git -C /root/fdi-repo rev-parse --short HEAD
       register: git_revision
       ignore_errors: true
-    - name: Set FDI version to Git revision
+    - name: Set revision as FDI release
       ansible.builtin.copy:
-        content: "{{ git_revision.stdout_lines.0 }}"
-        dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/VERSION
+        content: "{{ ansible_date_time.date }}+git{{ git_revision.stdout_lines.0 }}"
+        dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/RELEASE
 
     - name: Patch KIWI (https://github.com/OSInside/kiwi/issues/2275)
       ansible.builtin.shell:
