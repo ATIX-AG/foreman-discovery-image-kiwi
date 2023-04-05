@@ -16,6 +16,7 @@
           - qemu-img
           - squashfs-tools
           - xorriso
+          - patch
         state: present
         update_cache: true
     - name: Clone repo
@@ -46,6 +47,11 @@
       ansible.builtin.copy:
         content: "{{ git_revision.stdout_lines.0 }}"
         dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/VERSION
+
+    - name: Patch KIWI (https://github.com/OSInside/kiwi/issues/2275)
+      ansible.builtin.shell:
+        cmd: patch -d /usr/lib/python3.*/site-packages/kiwi/ < /root/fdi-repo/0001-Add-potential-shim-binary-for-Ubuntu.patch
+
     - name: Build image
       ansible.builtin.command:
         cmd: kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /root/fdi-image
