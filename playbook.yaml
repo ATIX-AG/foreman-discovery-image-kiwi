@@ -97,6 +97,14 @@
         dest: "/data/mirror/orcharhino/fdi/{{ lookup('env', 'CI_COMMIT_REF_SLUG') }}/"
       register: factory_copy
       with_items: "{{ files_to_copy.files }}"
+    - name: Get stats of ISO
+      ansible.builtin.stat:
+        path: "{{ factory_copy.results[0].dest }}"
+      register: iso_file
+    - name: Write SHA1 checksum to file
+      ansible.builtin.copy:
+        content: "{{ iso_file.stat.checksum }} {{ factory_copy.results[0].dest | basename }}\n"
+        dest: "{{ factory_copy.results[0].dest }}.sha1"
     - name: Set latest symlink
       ansible.builtin.file:
         src: "{{ factory_copy.results[0].dest }}"
