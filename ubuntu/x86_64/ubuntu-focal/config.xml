@@ -10,7 +10,7 @@
         <profile name="Live" description="Live image" import="true"/>
     </profiles>
     <preferences>
-        <version>1.16.4</version>
+        <version>0.1-atix</version>
         <packagemanager>apt-get</packagemanager>
         <locale>en_US</locale>
         <keytable>us</keytable>

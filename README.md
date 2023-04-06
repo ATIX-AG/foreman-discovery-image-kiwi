@@ -4,6 +4,13 @@ This repository contains KIWI image description(s) for Foreman Discovery Images
 (FDI) based on various distributions. This is required on SecureBoot enabled
 systems.
 
+# Versioning
+
+Please set tags in the following format `major.minor-atix`. Example:
+```
+2.1-atix
+```
+
 ## Build
 
 Local build:

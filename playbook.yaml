@@ -48,6 +48,12 @@
       ansible.builtin.copy:
         content: "{{ ansible_date_time.date }}+git{{ git_revision.stdout_lines.0 }}"
         dest: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/root/usr/share/fdi/RELEASE
+    - name: Set image version
+      ansible.builtin.lineinfile:
+        path: /root/fdi-repo/ubuntu/x86_64/ubuntu-focal/config.xml
+        regex: "<version>0.1-atix</version>"
+        line: "<version>{{ git_tag.stdout_lines.0 }}+git{{ git_revision.stdout_lines.0 }}</version>"
+      when: git_tag.rc == 0
 
     - name: Patch KIWI (https://github.com/OSInside/kiwi/issues/2275)
       ansible.builtin.shell:
