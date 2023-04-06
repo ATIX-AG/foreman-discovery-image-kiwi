@@ -95,5 +95,12 @@
       ansible.builtin.copy:
         src: "./{{ item.path }}"
         dest: "/data/mirror/orcharhino/fdi/{{ lookup('env', 'CI_COMMIT_REF_SLUG') }}/"
+      register: factory_copy
       with_items: "{{ files_to_copy.files }}"
+    - name: Set latest symlink
+      ansible.builtin.file:
+        src: "{{ factory_copy.results[0].dest }}"
+        dest: "/data/mirror/orcharhino/fdi/{{ lookup('env', 'CI_COMMIT_REF_SLUG') }}/latest.iso"
+        state: link
+        force: true
 ...
