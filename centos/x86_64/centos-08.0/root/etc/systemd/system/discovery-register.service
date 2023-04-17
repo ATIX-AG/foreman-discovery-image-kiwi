@@ -1,0 +1,12 @@
+[Unit]
+Description=Register this host in Foreman
+Wants=network-online.target
+After=basic.target network-online.target nss-lookup.target foreman-proxy.service
+
+[Service]
+Type=simple
+EnvironmentFile=/etc/default/discovery
+ExecStart=/usr/bin/discovery-register
+ExecReload=/bin/kill -HUP $MAINPID
+KillMode=process
+Restart=always
