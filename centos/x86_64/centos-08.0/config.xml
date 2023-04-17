@@ -17,7 +17,7 @@
         <rpm-check-signatures>false</rpm-check-signatures>
     </preferences>
     <preferences profiles="Live">
-        <type image="iso" flags="overlay" firmware="uefi" hybridpersistent_filesystem="ext4" hybridpersistent="true" kernelcmdline="console=ttyS0"/>
+        <type image="iso" flags="dmsquash" firmware="uefi" hybridpersistent_filesystem="ext4" hybridpersistent="true"/>
     </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
@@ -59,5 +59,6 @@
         <package name="grub2-efi-x64-modules"/>
         <package name="grub2-efi-x64"/>
         <package name="shim-x64" arch="x86_64"/>
+        <package name="dracut-live"/>
     </packages>
 </image>
