@@ -6,8 +6,6 @@
     </description>
     <profiles>
         <profile name="Live" description="Live image" import="true"/>
-        <profile name="Virtual" description="Simple Disk image"/>
-        <profile name="Disk" description="Expandable Disk image"/>
     </profiles>
     <preferences>
         <version>1.2.0</version>
@@ -20,19 +18,6 @@
     </preferences>
     <preferences profiles="Live">
         <type image="iso" flags="overlay" firmware="uefi" hybridpersistent_filesystem="ext4" hybridpersistent="true" kernelcmdline="console=ttyS0"/>
-    </preferences>
-    <preferences profiles="Virtual">
-        <type image="vmx" primary="true" filesystem="ext3" kernelcmdline="rhgb console=ttyS0" firmware="uefi" bootloader="grub2"/>
-    </preferences>
-    <preferences profiles="Disk">
-        <type image="oem" initrd_system="dracut" filesystem="ext3" installiso="true" firmware="uefi" kernelcmdline="console=ttyS0" bootloader="grub2">
-            <oemconfig>
-                <oem-systemsize>2048</oem-systemsize>
-                <oem-swap>true</oem-swap>
-                <oem-swapsize>200</oem-swapsize>
-                <oem-multipath-scan>false</oem-multipath-scan>
-            </oemconfig>
-        </type>
     </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
@@ -67,10 +52,6 @@
     </packages>
     <packages type="iso">
         <package name="dracut-kiwi-live"/>
-    </packages>
-    <packages type="oem">
-        <package name="dracut-kiwi-oem-repart"/>
-        <package name="dracut-kiwi-oem-dump"/>
     </packages>
     <packages type="bootstrap">
         <package name="filesystem"/>
