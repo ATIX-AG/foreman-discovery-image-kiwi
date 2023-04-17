@@ -22,6 +22,12 @@
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
     </users>
+    <repository type="rpm-md" alias="Foreman">
+        <source path="https://yum.theforeman.org/releases/3.1/el8/x86_64/"/>
+    </repository>
+    <repository type="rpm-md" alias="Foreman-Plugins">
+        <source path="https://yum.theforeman.org/plugins/3.1/el8/x86_64/"/>
+    </repository>
     <repository type="rpm-md" alias="kiwi-next-generation" priority="1">
         <source path="obs://Virtualization:Appliances:Builder/CentOS_8"/>
     </repository>
@@ -49,11 +55,44 @@
         <package name="grub2"/>
         <package name="kernel"/>
         <package name="plymouth-theme-charge"/>
+         <!-- Facter -->
+        <package name="rubygem-facter"/>
+        <package name="ethtool"/>
+        <package name="lldpad"/>
+        <package name="net-tools"/>
+        <package name="dmidecode"/>
+        <package name="virt-what"/>
+        <!-- Foreman proxy -->
+        <package name="foreman-proxy"/>
+        <package name="rubygem-smart_proxy_discovery_image"/>
+        <package name="rubygem-newt"/>
+        <package name="rubygem-fast_gettext"/>
+        <package name="curl"/>
+        <package name="wget"/>
+        <package name="passwd"/>
+        <package name="sudo"/>
+        <package name="OpenIPMI"/>
+        <package name="openssl"/>
+        <package name="elfutils-libs"/>
+        <!-- Interactive discovery -->
+        <package name="kexec-tools"/>
+        <package name="kbd"/>
+        <package name="unzip"/>
+        <!-- Foreman Debug/Misc -->
+        <package name="openssh-server"/>
+        <package name="openssh-clients"/>
+        <package name="ipmitool"/>
+        <package name="NetworkManager"/>
+        <package name="vim"/>
+        <package name="less"/>
+        <package name="file"/>
     </packages>
     <packages type="iso">
         <package name="dracut-kiwi-live"/>
     </packages>
     <packages type="bootstrap">
+        <collectionModule name="ruby" stream="2.7" enable="true"/>
+        <collectionModule name="postgresql" stream="12" enable="true"/>
         <package name="filesystem"/>
         <package name="basesystem"/>
         <package name="grub2-efi-x64-modules"/>
