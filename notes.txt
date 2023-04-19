@@ -1,6 +1,0 @@
-1. setup fedora 37 host
-2. dnf install -y git kiwi-cli
-3. checkout repo (mit CI_JOB_TOKEN)
-4. kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /root/ubuntu 
-5. export image
-6. tear down host
