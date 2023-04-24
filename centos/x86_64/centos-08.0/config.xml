@@ -1,14 +1,14 @@
-<image schemaversion="6.8" name="CentOS-8_appliance">
+<image schemaversion="6.8" name="CentOS-8-FDI">
     <description type="system">
-        <author>Marcus Schaefer</author>
-        <contact>ms@suse.de</contact>
-        <specification>CentOS Enterprise 8 Appliance</specification>
+        <author>Jan Löser</author>
+        <contact>loeser@atix.de</contact>
+        <specification>Image description for CentOS 8 based Foreman Discovery Image</specification>
     </description>
     <profiles>
         <profile name="Live" description="Live image" import="true"/>
     </profiles>
     <preferences>
-        <version>1.2.0</version>
+        <version>0.1-atix</version>
         <packagemanager>dnf</packagemanager>
         <bootsplash-theme>charge</bootsplash-theme>
         <locale>en_US</locale>
