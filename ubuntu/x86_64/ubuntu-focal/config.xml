@@ -2,7 +2,7 @@
 
 <image schemaversion="6.8" name="Ubuntu-20.04-FDI">
     <description type="system">
-        <author>Jan Löeser</author>
+        <author>Jan Löser</author>
         <contact>loeser@atix.de</contact>
         <specification>Image description for Ubuntu 20.04 based Foreman Discovery Image</specification>
     </description>
