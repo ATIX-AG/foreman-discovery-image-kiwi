@@ -76,7 +76,6 @@
         <package name="elfutils-libs"/>
         <!-- Interactive discovery -->
         <package name="kexec-tools"/>
-        <package name="kbd"/>
         <package name="unzip"/>
         <!-- Foreman Debug/Misc -->
         <package name="openssh-server"/>
@@ -86,6 +85,21 @@
         <package name="vim"/>
         <package name="less"/>
         <package name="file"/>
+    </packages>
+    <packages type="uninstall">
+        <package name="audit"/>
+        <package name="tuned"/>
+        <package name="iwl7260-firmware"/>
+        <package name="iwl6000g2a-firmware"/>
+        <package name="iwl5150-firmware"/>
+        <package name="iwl3160-firmware"/>
+        <package name="iwl2000-firmware"/>
+        <package name="iwl105-firmware"/>
+        <package name="iwl100-firmware"/>
+        <package name="selinux-policy"/>
+        <package name="selinux-policy-targeted"/>
+        <package name="dejavu-sans-fonts"/>
+        <package name="dejavu-fonts-common"/>
     </packages>
     <packages type="iso">
         <package name="dracut-kiwi-live"/>
