@@ -1,8 +1,12 @@
-# Foreman Discovery Image
+# Foreman Discovery Image - KIWI
 
 This repository contains KIWI image description(s) for Foreman Discovery Images
-(FDI) based on various distributions. This is required on SecureBoot enabled
-systems.
+(FDI) based on various distributions and is a combination of:
+
+- https://github.com/OSInside/kiwi-descriptions
+- https://github.com/theforeman/foreman-discovery-image
+
+This can be useful for SecureBoot enabled systems.
 
 # SecureBoot
 
