@@ -1,16 +1,14 @@
-<image schemaversion="6.8" name="AlmaLinux-8_appliance">
+<image schemaversion="6.8" name="AlmaLinux-8-FDI">
     <description type="system">
-        <author>Marcus Schaefer</author>
-        <contact>ms@suse.de</contact>
-        <specification>Alma Linux 8 Appliance</specification>
+        <author>Jan Löser</author>
+        <contact>loeser@atix.de</contact>
+        <specification>Image description for AlmaLinux 8 based Foreman Discovery Image</specification>
     </description>
     <profiles>
         <profile name="Live" description="Live image" import="true"/>
-        <profile name="Virtual" description="Simple Disk image"/>
-        <profile name="Disk" description="Expandable Disk image"/>
     </profiles>
     <preferences>
-        <version>8.3.0</version>
+        <version>0.1-atix</version>
         <packagemanager>dnf</packagemanager>
         <bootsplash-theme>charge</bootsplash-theme>
         <locale>en_US</locale>
@@ -19,24 +17,17 @@
         <rpm-check-signatures>false</rpm-check-signatures>
     </preferences>
     <preferences profiles="Live">
-        <type image="iso" flags="dmsquash" firmware="uefi" kernelcmdline="console=ttyS0"/>
-    </preferences>
-    <preferences profiles="Virtual">
-        <type image="vmx" primary="true" filesystem="xfs" kernelcmdline="rhgb console=ttyS0" firmware="uefi" bootloader="grub2"/>
-    </preferences>
-    <preferences profiles="Disk">
-        <type image="oem" initrd_system="dracut" filesystem="ext3" installiso="true" firmware="uefi" kernelcmdline="console=ttyS0" bootloader="grub2">
-            <oemconfig>
-                <oem-systemsize>2048</oem-systemsize>
-                <oem-swap>true</oem-swap>
-                <oem-swapsize>200</oem-swapsize>
-                <oem-multipath-scan>false</oem-multipath-scan>
-            </oemconfig>
-        </type>
+        <type image="iso" flags="dmsquash" firmware="uefi" hybridpersistent_filesystem="ext4" hybridpersistent="true"/>
     </preferences>
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
     </users>
+    <repository type="rpm-md" alias="Foreman">
+        <source path="https://yum.theforeman.org/releases/3.1/el8/x86_64/"/>
+    </repository>
+    <repository type="rpm-md" alias="Foreman-Plugins">
+        <source path="https://yum.theforeman.org/plugins/3.1/el8/x86_64/"/>
+    </repository>
     <repository type="rpm-md" alias="AlmaLinux8-BaseOS">
         <source path="https://repo.almalinux.org/almalinux/8/BaseOS/x86_64/os/"/>
     </repository>
@@ -58,16 +49,63 @@
         <package name="grub2"/>
         <package name="kernel"/>
         <package name="plymouth-theme-charge"/>
+         <!-- Facter -->
+        <package name="rubygem-facter"/>
+        <package name="ethtool"/>
+        <package name="lldpad"/>
+        <package name="net-tools"/>
+        <package name="dmidecode"/>
+        <package name="virt-what"/>
+        <!-- Foreman proxy -->
+        <package name="foreman-proxy"/>
+        <package name="rubygem-smart_proxy_discovery_image"/>
+        <package name="rubygem-newt"/>
+        <package name="rubygem-fast_gettext"/>
+        <package name="curl"/>
+        <package name="wget"/>
+        <package name="passwd"/>
+        <package name="sudo"/>
+        <package name="OpenIPMI"/>
+        <package name="openssl"/>
+        <package name="elfutils-libs"/>
+        <!-- Interactive discovery -->
+        <package name="kexec-tools"/>
+        <package name="unzip"/>
+        <!-- Foreman Debug/Misc -->
+        <package name="openssh-server"/>
+        <package name="openssh-clients"/>
+        <package name="ipmitool"/>
+        <package name="NetworkManager"/>
+        <package name="vim"/>
+        <package name="less"/>
+        <package name="file"/>
     </packages>
-    <packages type="image" profiles="Disk">
-        <package name="dracut-kiwi-oem-repart"/>
-        <package name="dracut-kiwi-oem-dump"/>
+    <packages type="uninstall">
+        <package name="audit"/>
+        <package name="tuned"/>
+        <package name="iwl7260-firmware"/>
+        <package name="iwl6000g2a-firmware"/>
+        <package name="iwl5150-firmware"/>
+        <package name="iwl3160-firmware"/>
+        <package name="iwl2000-firmware"/>
+        <package name="iwl105-firmware"/>
+        <package name="iwl100-firmware"/>
+        <package name="selinux-policy"/>
+        <package name="selinux-policy-targeted"/>
+        <package name="dejavu-sans-fonts"/>
+        <package name="dejavu-fonts-common"/>
+    </packages>
+    <packages type="iso">
+        <package name="dracut-kiwi-live"/>
     </packages>
     <packages type="bootstrap">
+        <collectionModule name="ruby" stream="2.7" enable="true"/>
+        <collectionModule name="postgresql" stream="12" enable="true"/>
         <package name="filesystem"/>
         <package name="basesystem"/>
         <package name="grub2-efi-x64-modules"/>
         <package name="grub2-efi-x64"/>
         <package name="shim-x64" arch="x86_64"/>
+        <package name="dracut-live"/>
     </packages>
 </image>

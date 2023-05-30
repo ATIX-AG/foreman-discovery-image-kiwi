@@ -1,0 +1,46 @@
+#!/bin/bash
+
+source /etc/default/discovery
+export FACTERLIB
+
+echo "* LOOPBACK ISO IMAGE CHECK"
+checkisomd5 /dev/loop0
+
+echo "* KERNEL COMMAND LINE *"
+cat /proc/cmdline
+
+echo "* PROCESSES *"
+ps axww
+
+echo "* PACKAGES"
+cat /usr/PACKAGES-LIST
+
+echo "* NETWORK CONFIGURATION *"
+nmcli con
+for C in /etc/NetworkManager/system-connections/*; do
+  echo $C; cat $C; echo
+done
+
+echo "* IP ADDRESSES *"
+ip addr show
+
+echo "* ROUTES *"
+ip route
+
+echo "* NEIGHBOURS *"
+ip neigh
+
+echo "* DHCP LEASES *"
+cat /var/lib/NetworkManager/dhclient-*.lease
+
+echo "* DNS *"
+cat /etc/resolv.conf
+
+echo "* IMAGE VERSION"
+cat /usr/share/fdi/VERSION /usr/share/fdi/RELEASE
+
+echo "* FACTER *"
+facter --json
+
+echo "* JOURNAL (last 500 lines) *"
+journalctl -n300 -ocat
