@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<image schemaversion="6.8" name="Ubuntu-20.04-FDI">
+<image schemaversion="7.4" name="Ubuntu-20.04-FDI">
     <description type="system">
         <author>Jan Löser</author>
         <contact>loeser@atix.de</contact>
@@ -11,7 +11,7 @@
     </profiles>
     <preferences>
         <version>0.1-atix</version>
-        <packagemanager>apt-get</packagemanager>
+        <packagemanager>apt</packagemanager>
         <locale>en_US</locale>
         <keytable>us</keytable>
         <timezone>UTC</timezone>

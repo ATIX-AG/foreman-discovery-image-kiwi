@@ -1,4 +1,6 @@
-<image schemaversion="6.8" name="CentOS-8-FDI">
+<?xml version="1.0" encoding="utf-8"?>
+
+<image schemaversion="7.4" name="CentOS-8-FDI">
     <description type="system">
         <author>Jan Löser</author>
         <contact>loeser@atix.de</contact>
