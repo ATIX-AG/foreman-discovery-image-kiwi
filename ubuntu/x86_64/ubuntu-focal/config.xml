@@ -92,9 +92,6 @@
         <package name="less"/>
         <package name="file"/>
     </packages>
-    <packages type="iso">
-        <package name="dracut-kiwi-live"/>
-    </packages>
     <packages type="bootstrap">
         <!-- comptibility package for /usr/lib paths -->
         <package name="usrmerge"/>
