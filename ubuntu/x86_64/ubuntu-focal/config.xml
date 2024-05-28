@@ -27,7 +27,7 @@
         <source path="http://deb.theforeman.org/"/>
     </repository>
     <repository type="apt-deb" repository_gpgcheck="false" imageinclude="true">
-        <source path="obs://Virtualization:Appliances:Builder/xUbuntu_20.04"/>
+        <source path="http://archive.ubuntu.com/ubuntu/dists/focal/"/>
     </repository>
     <repository type="apt-deb" alias="Focal-security" distribution="focal-security" components="main multiverse restricted universe" repository_gpgcheck="false">
         <source path="http://security.ubuntu.com/ubuntu"/>
