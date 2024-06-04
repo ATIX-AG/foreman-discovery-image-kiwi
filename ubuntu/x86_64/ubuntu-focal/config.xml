@@ -23,7 +23,7 @@
     <users>
         <user password="$1$wYJUgpM5$RXMMeASDc035eX.NbYWFl0" home="/root" name="root" groups="root"/>
     </users>
-    <repository type="apt-deb" alias="Foreman" distribution="focal" components="3.1" repository_gpgcheck="false" imageinclude="true">
+    <repository type="apt-deb" alias="Foreman" distribution="focal" components="3.11" repository_gpgcheck="false" imageinclude="true">
         <source path="http://deb.theforeman.org/"/>
     </repository>
     <repository type="apt-deb" repository_gpgcheck="false" imageinclude="true">
