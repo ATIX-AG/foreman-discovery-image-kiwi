@@ -40,7 +40,18 @@ Please set tags in the following format `major.minor-atix`. Example:
 
 Local build:
 ```
+localhost:~ # . /etc/os-release ; echo $PRETTY_NAME
+Debian GNU/Linux 12 (bookworm)
 localhost:~ # kiwi-ng --version
-KIWI (next generation) version 9.24.36
-localhost:~ # kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-focal --target-dir /tmp/ubuntu
+KIWI (next generation) version 10.1.16
+localhost:~ # kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-jammy --target-dir /tmp/ubuntu
 ```
+
+### Ubuntu 20.04 Build
+
+Ubuntu 20.04 repositories in OBS have been removed.
+Can't be build anymore.
+
+### Ubuntu 22.04 Build
+
+Workaround for "Failed to start Switch Root" issue: https://github.com/OSInside/kiwi/issues/2675
