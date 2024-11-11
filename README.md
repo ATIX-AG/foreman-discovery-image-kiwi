@@ -40,11 +40,11 @@ Please set tags in the following format `major.minor-atix`. Example:
 
 Local build:
 ```
-localhost:~ # . /etc/os-release ; echo $PRETTY_NAME
-Debian GNU/Linux 12 (bookworm)
-localhost:~ # kiwi-ng --version
-KIWI (next generation) version 10.1.16
-localhost:~ # kiwi-ng --debug system build --description ubuntu/x86_64/ubuntu-jammy --target-dir /tmp/ubuntu
+root@ubuntu:~# . /etc/os-release ; echo $PRETTY_NAME
+Ubuntu 22.04.4 LTS
+root@ubuntu:~# kiwi-ng --version
+KIWI (next generation) version 9.25.22
+root@ubuntu:~/kiwi-descriptions# kiwi-ng system build --description ubuntu/x86_64/ubuntu-jammy/ --target-dir /tmp/ubuntu
 ```
 
 ### Ubuntu 20.04 Build
@@ -54,4 +54,5 @@ Can't be build anymore.
 
 ### Ubuntu 22.04 Build
 
-Workaround for "Failed to start Switch Root" issue: https://github.com/OSInside/kiwi/issues/2675
+See https://github.com/OSInside/kiwi/issues/2675 for more information regarding "Failed to start Switch Root" issue.
+This has been hot fixed in the KIWI description.
