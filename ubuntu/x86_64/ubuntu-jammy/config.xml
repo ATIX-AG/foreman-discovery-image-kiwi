@@ -100,6 +100,7 @@
 	<package name="dracut-kiwi-live"/>
     </packages>
     <packages type="bootstrap">
+        <package name="patch"/>
         <package name="usrmerge"/>
     </packages>
 </image>

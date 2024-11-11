@@ -63,6 +63,16 @@ apt-get clean
 rm -rf /var/lib/apt/*
 rm -rf /var/cache/apt/*
 
+#======================================
+# initrd-switch-root hot fix
+#--------------------------------------
+set -ex
+
+patch -p0 < initrd-switch-root.patch
+rm /initrd-switch-root.patch
+
+set +ex
+
 #=======================================
 # Foreman Discovery Image
 #---------------------------------------

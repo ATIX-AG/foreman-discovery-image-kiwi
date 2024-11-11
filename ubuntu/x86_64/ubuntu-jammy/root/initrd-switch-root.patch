@@ -1,0 +1,11 @@
+--- /usr/lib/systemd/system/initrd-switch-root.service	2022-03-11 12:48:49.000000000 +0000
++++ /initrd-switch-root.service	2024-11-11 07:17:30.254846257 +0000
+@@ -14,6 +14,8 @@
+ OnFailure=emergency.target
+ OnFailureJobMode=replace-irreversibly
+ AllowIsolate=yes
++Requires=sysroot.mount
++After=sysroot.mount
+
+ [Service]
+ Type=oneshot
